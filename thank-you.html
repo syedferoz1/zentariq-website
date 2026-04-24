@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zentariq Solutions | Thank You</title>
+    <style>
+        :root {
+            --accent: #ff8c32;
+            --accent-dark: #e26f15;
+            --surface: rgba(8, 8, 8, 0.78);
+            --surface-border: rgba(255, 255, 255, 0.12);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.76);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-primary);
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.78)),
+                url("assets/zentariq-logo-linkedin.png") center center / cover no-repeat fixed;
+        }
+
+        .card {
+            width: min(100%, 760px);
+            padding: 46px 38px;
+            border-radius: 28px;
+            text-align: center;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        .logo {
+            width: 240px;
+            max-width: 100%;
+            margin: 0 auto 28px;
+            display: block;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 9px 16px;
+            border-radius: 999px;
+            background: rgba(255, 140, 50, 0.16);
+            color: #ffd9bf;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 6vw, 52px);
+            margin-bottom: 14px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 17px;
+            max-width: 44ch;
+            margin: 0 auto;
+        }
+
+        .cta {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 22px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            box-shadow: 0 16px 32px rgba(255, 140, 50, 0.22);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px;
+                background-attachment: scroll;
+            }
+
+            .card {
+                padding: 34px 22px;
+                border-radius: 22px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <img class="logo" src="assets/zentariq-logo-linkedin.png" alt="Zentariq Solutions logo">
+        <div class="tag">Submission received</div>
+        <h1>Thank you, <span id="leadName">there</span>.</h1>
+        <p>Your details have been captured successfully. A Zentariq Solutions team member will connect with you soon to discuss the next steps.</p>
+
+        <div class="submission-details" id="submissionDetails" style="display: none; margin-top: 30px; text-align: left; background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h3 style="color: var(--accent); margin-bottom: 15px; font-size: 18px;">Your Submission Details:</h3>
+            <div style="display: grid; gap: 8px; font-size: 14px; color: var(--text-secondary);">
+                <p><strong>Name:</strong> <span id="displayName"></span></p>
+                <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="displayPhone"></span></p>
+                <p><strong>Date of Birth:</strong> <span id="displayDob"></span></p>
+                <p><strong>Message:</strong> <span id="displayMessage"></span></p>
+            </div>
+        </div>
+
+        <a class="cta" href="landing-page.html">Back to contact page</a>
+    </main>
+
+    <script>
+        const savedName = sessionStorage.getItem("zentariqLeadName");
+        if (savedName) {
+            document.getElementById("leadName").textContent = savedName;
+        }
+
+        // Display all submission details
+        const displayName = sessionStorage.getItem("zentariqLeadName");
+        const displayEmail = sessionStorage.getItem("zentariqLeadEmail");
+        const displayPhone = sessionStorage.getItem("zentariqLeadPhone");
+        const displayDob = sessionStorage.getItem("zentariqLeadDob");
+        const displayMessage = sessionStorage.getItem("zentariqLeadMessage");
+
+        if (displayName || displayEmail || displayPhone || displayDob || displayMessage) {
+            document.getElementById("submissionDetails").style.display = "block";
+            document.getElementById("displayName").textContent = displayName || "Not provided";
+            document.getElementById("displayEmail").textContent = displayEmail || "Not provided";
+            document.getElementById("displayPhone").textContent = displayPhone || "Not provided";
+            document.getElementById("displayDob").textContent = displayDob || "Not provided";
+            document.getElementById("displayMessage").textContent = displayMessage || "No message provided";
+        }
+    </script>
+</body>
+</html>
