@@ -311,7 +311,7 @@ Example: action="https://formspree.io/f/abc123def"
                 <p>Fill out the form below and we&apos;ll get back to you as soon as possible.</p>
             </div>
 
-            <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" novalidate>
+            <form id="contactForm" novalidate>
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" placeholder="Enter your full name" required>
@@ -344,11 +344,6 @@ Example: action="https://formspree.io/f/abc123def"
 
                 <button type="submit" class="submit-btn">Submit</button>
                 <div id="formMessage" class="form-message" aria-live="polite"></div>
-
-                <!-- Configuration status indicator -->
-                <div id="configStatus" style="margin-top: 15px; font-size: 12px; color: rgba(255, 255, 255, 0.6); text-align: center;">
-                    ⚠️ Email delivery not configured - contact administrator
-                </div>
             </form>
         </section>
     </main>
@@ -357,24 +352,22 @@ Example: action="https://formspree.io/f/abc123def"
         const form = document.getElementById("contactForm");
         const formMessage = document.getElementById("formMessage");
 
-        // Hide configuration warning if form is properly set up
-        if (!document.querySelector('form').action.includes('YOUR_FORM_ID_HERE')) {
-            document.getElementById('configStatus').style.display = 'none';
-        }
-
         form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
             const name = document.getElementById("name").value.trim();
             const email = document.getElementById("email").value.trim();
             const phone = document.getElementById("phone").value.trim();
             const dob = document.getElementById("dob").value;
             const message = document.getElementById("message").value.trim();
 
+            // Validate required fields
             if (!name || !email || !phone || !dob) {
-                e.preventDefault();
                 showMessage("Please fill in all required fields.");
                 return;
             }
 
+            // Validate age (must be at least 13)
             const birthDate = new Date(dob);
             const today = new Date();
             let age = today.getFullYear() - birthDate.getFullYear();
@@ -386,46 +379,42 @@ Example: action="https://formspree.io/f/abc123def"
             }
 
             if (age < 13) {
-                e.preventDefault();
                 showMessage("You must be at least 13 years old.");
                 return;
             }
 
+            // Validate email format
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                e.preventDefault();
                 showMessage("Please enter a valid email address.");
                 return;
             }
 
+            // Validate phone number
             const phoneRegex = /^[\d\s\-+()]+$/;
             if (!phoneRegex.test(phone) || phone.replace(/\D/g, "").length < 10) {
-                e.preventDefault();
                 showMessage("Please enter a valid phone number.");
                 return;
             }
 
-            // Check if Formspree is properly configured
-            if (document.querySelector('form').action.includes('YOUR_FORM_ID_HERE')) {
-                e.preventDefault();
-                showMessage("Form is not fully configured. Please contact the administrator to set up email delivery.");
-                return;
-            }
-
-            // Store form data in sessionStorage for potential use on thank you page
+            // Store form data in sessionStorage
             sessionStorage.setItem("zentariqLeadName", name);
             sessionStorage.setItem("zentariqLeadEmail", email);
             sessionStorage.setItem("zentariqLeadPhone", phone);
             sessionStorage.setItem("zentariqLeadDob", dob);
             sessionStorage.setItem("zentariqLeadMessage", message);
 
-            // Show loading message and let form submit to Formspree
-            showMessage("Sending your message...");
+            // Show success message and redirect to thank you page
+            showMessage("✓ Submission received! Redirecting...");
+            setTimeout(() => {
+                window.location.href = "thank-you.html";
+            }, 800);
         });
 
         function showMessage(message) {
             formMessage.textContent = message;
             formMessage.className = "form-message error";
+            formMessage.style.display = "block";
         }
     </script>
 </body>
