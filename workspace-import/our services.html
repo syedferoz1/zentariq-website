@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Zentariq's connected services across business strategy, branding, web development, marketing, AI, and data intelligence.">
+    <meta name="theme-color" content="#040507">
+    <title>Our Services | Zentariq Solutions</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #040507;
+            --surface: rgba(255, 255, 255, 0.045);
+            --surface-raised: rgba(17, 20, 27, 0.88);
+            --border: rgba(255, 255, 255, 0.12);
+            --text: #f5f3ee;
+            --text-soft: rgba(245, 243, 238, 0.7);
+            --accent: #f5a65c;
+            --accent-strong: #ef7e34;
+            --max: 1200px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 105px;
+        }
+
+        body {
+            min-width: 320px;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        body::before,
+        body::after {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            content: "";
+        }
+
+        body::before {
+            background:
+                radial-gradient(circle at 12% 8%, rgba(245, 159, 81, 0.14), transparent 29%),
+                radial-gradient(circle at 88% 21%, rgba(173, 216, 255, 0.065), transparent 27%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.02), transparent 50%);
+        }
+
+        body::after {
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
+            background-size: 88px 88px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 78%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        .site-shell {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .topbar {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 20;
+            padding: 20px 20px 0;
+        }
+
+        .topbar-inner {
+            display: flex;
+            width: min(100%, 1440px);
+            min-height: 64px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 0 auto;
+            padding: 10px 14px 10px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            background: rgba(9, 10, 13, 0.58);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(18px);
+            transition: background var(--transition), border-color var(--transition);
+        }
+
+        .topbar.is-scrolled .topbar-inner {
+            border-color: rgba(255, 255, 255, 0.18);
+            background: rgba(5, 5, 5, 0.84);
+        }
+
+        .brand {
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+        }
+
+        .brand img {
+            display: block;
+            width: 148px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(14px, 1.8vw, 28px);
+            color: var(--text-soft);
+            font-size: 0.82rem;
+        }
+
+        .nav-links a {
+            position: relative;
+            padding: 6px 0;
+            transition: color var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a[aria-current="page"] {
+            color: var(--text);
+        }
+
+        .nav-links a::after {
+            position: absolute;
+            right: 0;
+            bottom: 1px;
+            left: 0;
+            height: 1px;
+            background: var(--accent);
+            content: "";
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a[aria-current="page"]::after {
+            transform: scaleX(1);
+        }
+
+        .nav-cta,
+        .button {
+            display: inline-flex;
+            min-height: 46px;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 11px 17px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.88rem;
+            transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+        }
+
+        .nav-cta {
+            min-height: 40px;
+            padding: 8px 14px;
+            border-color: rgba(255, 255, 255, 0.13);
+            background: rgba(255, 255, 255, 0.07);
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .button:hover,
+        .nav-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background: linear-gradient(115deg, #f7bc7d, var(--accent-strong));
+            box-shadow: 0 10px 30px rgba(245, 159, 81, 0.2);
+            color: #100c07;
+            font-weight: 700;
+        }
+
+        .button-primary:hover {
+            box-shadow: 0 14px 34px rgba(245, 159, 81, 0.29);
+        }
+
+        .button-secondary {
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .button-secondary:hover,
+        .nav-cta:hover {
+            border-color: rgba(245, 159, 81, 0.4);
+            background: rgba(245, 159, 81, 0.12);
+        }
+
+        .button-arrow {
+            display: inline-block;
+            transition: transform var(--transition);
+        }
+
+        .button:hover .button-arrow {
+            transform: translateX(4px);
+        }
+
+        .nav-menu {
+            display: none;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .nav-menu-lines,
+        .nav-menu-lines::before,
+        .nav-menu-lines::after {
+            display: block;
+            width: 14px;
+            height: 1px;
+            background: currentColor;
+            content: "";
+            transition: transform var(--transition);
+        }
+
+        .nav-menu-lines::before {
+            transform: translateY(-5px);
+        }
+
+        .nav-menu-lines::after {
+            transform: translateY(4px);
+        }
+
+        main {
+            overflow: clip;
+        }
+
+        .hero {
+            display: grid;
+            width: min(100%, 1440px);
+            min-height: min(780px, 100svh);
+            grid-template-columns: minmax(0, 1fr) minmax(300px, 0.88fr);
+            align-items: center;
+            gap: clamp(36px, 7vw, 100px);
+            margin: 0 auto;
+            padding: 142px 34px 76px;
+            position: relative;
+        }
+
+        .hero::before {
+            position: absolute;
+            top: 16%;
+            right: 3%;
+            width: min(48vw, 620px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245, 159, 81, 0.1), rgba(148, 113, 218, 0.04) 34%, transparent 68%);
+            content: "";
+            pointer-events: none;
+        }
+
+        .hero-content,
+        .hero-visual {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 23px;
+            padding: 8px 11px;
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.045);
+            color: rgba(245, 243, 238, 0.78);
+            font-size: 0.67rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px rgba(245, 159, 81, 0.6);
+            content: "";
+        }
+
+        .hero h1 {
+            max-width: 11ch;
+            margin: 0 0 22px;
+            font-size: clamp(3.2rem, 6.1vw, 6rem);
+            font-weight: 600;
+            letter-spacing: -0.065em;
+            line-height: 0.96;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-copy {
+            max-width: 60ch;
+            margin: 0 0 24px;
+            color: var(--text-soft);
+            font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+            line-height: 1.75;
+        }
+
+        .hero-highlight {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 0 0 27px;
+            color: var(--text);
+            font-size: 0.98rem;
+            font-weight: 600;
+        }
+
+        .hero-highlight::before {
+            width: 2px;
+            min-height: 28px;
+            flex: 0 0 2px;
+            border-radius: 2px;
+            background: linear-gradient(var(--accent), transparent);
+            content: "";
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 11px;
+        }
+
+        .hero-visual {
+            min-height: 420px;
+            display: grid;
+            place-items: center;
+        }
+
+        .orbit-visual {
+            position: relative;
+            display: grid;
+            width: min(100%, 490px);
+            aspect-ratio: 1;
+            place-items: center;
+        }
+
+        .orbit-ring {
+            position: absolute;
+            width: 88%;
+            aspect-ratio: 1;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 50%;
+            transform: rotate(-20deg) scaleY(0.58);
+        }
+
+        .orbit-ring:nth-child(2) {
+            width: 70%;
+            transform: rotate(54deg) scaleY(0.78);
+        }
+
+        .orbit-ring:nth-child(3) {
+            width: 98%;
+            border-color: rgba(245, 159, 81, 0.13);
+            transform: rotate(20deg) scaleY(0.42);
+        }
+
+        .orbit-core {
+            display: grid;
+            width: 36%;
+            aspect-ratio: 1;
+            place-items: center;
+            border: 1px solid rgba(245, 159, 81, 0.32);
+            border-radius: 50%;
+            background: radial-gradient(circle at 34% 28%, rgba(245, 159, 81, 0.22), rgba(17, 20, 27, 0.94) 66%);
+            box-shadow: 0 0 70px rgba(245, 159, 81, 0.12), inset 0 0 34px rgba(255, 255, 255, 0.035);
+            text-align: center;
+        }
+
+        .orbit-core strong {
+            display: block;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            letter-spacing: -0.04em;
+        }
+
+        .orbit-core span {
+            display: block;
+            margin-top: 2px;
+            color: var(--text-soft);
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .orbit-node {
+            position: absolute;
+            display: inline-flex;
+            min-height: 41px;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            background: rgba(12, 14, 19, 0.84);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
+            color: rgba(245, 243, 238, 0.84);
+            font-size: 0.76rem;
+            backdrop-filter: blur(12px);
+        }
+
+        .orbit-node::before {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            content: "";
+        }
+
+        .orbit-node.strategy { top: 15%; left: 12%; }
+        .orbit-node.branding { top: 23%; right: 1%; }
+        .orbit-node.digital { right: 4%; bottom: 20%; }
+        .orbit-node.growth { bottom: 13%; left: 13%; }
+        .orbit-node.intelligence { top: 47%; left: -3%; }
+
+        .section {
+            width: min(100%, var(--max));
+            margin: 0 auto;
+            padding: 74px 28px;
+        }
+
+        .services-intro {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 22px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .services-intro .eyebrow {
+            margin-bottom: 12px;
+        }
+
+        .services-intro h2 {
+            margin: 0;
+            font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+            letter-spacing: -0.05em;
+            line-height: 1.08;
+        }
+
+        .services-intro p {
+            max-width: 44ch;
+            margin: 0 0 2px;
+            color: var(--text-soft);
+            font-size: 0.94rem;
+        }
+
+        .service-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(300px, 0.76fr);
+            align-items: center;
+            gap: clamp(34px, 7vw, 92px);
+            padding: clamp(38px, 6vw, 76px) 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            scroll-margin-top: 95px;
+        }
+
+        .service-card:last-child {
+            border-bottom: 0;
+        }
+
+        .service-card.is-reversed .service-content {
+            order: 2;
+        }
+
+        .service-card.is-reversed .service-visual {
+            order: 1;
+        }
+
+        .service-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 21px;
+            color: var(--text-soft);
+            font-size: 0.69rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .service-number {
+            color: var(--accent);
+            font-size: 0.84rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .service-meta::before {
+            width: 26px;
+            height: 1px;
+            background: rgba(245, 159, 81, 0.55);
+            content: "";
+        }
+
+        .service-card h2 {
+            max-width: 18ch;
+            margin: 0 0 17px;
+            font-size: clamp(2rem, 3.55vw, 3.35rem);
+            font-weight: 550;
+            letter-spacing: -0.055em;
+            line-height: 1.02;
+        }
+
+        .service-description {
+            max-width: 62ch;
+            margin: 0 0 25px;
+            color: var(--text-soft);
+            font-size: 0.96rem;
+            line-height: 1.75;
+        }
+
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 11px 18px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .service-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: rgba(245, 243, 238, 0.88);
+            font-size: 0.84rem;
+            line-height: 1.45;
+        }
+
+        .service-list li::before {
+            width: 6px;
+            height: 6px;
+            flex: 0 0 6px;
+            margin-top: 0.43em;
+            border-radius: 50%;
+            background: var(--accent);
+            content: "";
+            box-shadow: 0 0 10px rgba(245, 159, 81, 0.35);
+        }
+
+        .service-visual {
+            position: relative;
+            display: grid;
+            min-height: 330px;
+            place-items: center;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-xl);
+            background:
+                radial-gradient(circle at 75% 18%, rgba(245, 159, 81, 0.11), transparent 36%),
+                linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
+            box-shadow: 0 26px 70px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-visual::before {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 36px 36px;
+            content: "";
+            mask-image: radial-gradient(ellipse at center, black, transparent 78%);
+            pointer-events: none;
+        }
+
+        .visual-content {
+            position: relative;
+            width: min(100% - 38px, 390px);
+            z-index: 1;
+        }
+
+        .visual-caption {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 16px;
+            color: rgba(245, 243, 238, 0.6);
+            font-size: 0.67rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .visual-caption strong {
+            color: rgba(245, 243, 238, 0.9);
+            font-size: 0.75rem;
+            letter-spacing: 0.02em;
+            text-transform: none;
+        }
+
+        .visual-card {
+            padding: 19px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            background: rgba(10, 12, 17, 0.82);
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(12px);
+        }
+
+        .strategy-map {
+            display: grid;
+            grid-template-columns: 1fr 28px 1fr;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .map-column {
+            display: grid;
+            gap: 9px;
+        }
+
+        .map-node {
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 11px;
+            background: rgba(255, 255, 255, 0.045);
+            color: rgba(245, 243, 238, 0.7);
+            font-size: 0.71rem;
+        }
+
+        .map-node strong {
+            display: block;
+            margin-bottom: 3px;
+            color: var(--text);
+            font-size: 0.78rem;
+        }
+
+        .map-node.is-highlighted {
+            border-color: rgba(245, 159, 81, 0.28);
+            background: rgba(245, 159, 81, 0.1);
+        }
+
+        .map-arrow {
+            color: var(--accent);
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .brand-board {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 10px;
+        }
+
+        .brand-tile {
+            min-height: 102px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 13px;
+            background: #171a22;
+            color: rgba(245, 243, 238, 0.72);
+            font-size: 0.67rem;
+        }
+
+        .brand-tile.primary {
+            grid-row: span 2;
+            min-height: 214px;
+            justify-content: end;
+            background:
+                radial-gradient(circle at 75% 28%, rgba(245, 159, 81, 0.2), transparent 40%),
+                linear-gradient(145deg, #27252a, #15171d);
+        }
+
+        .brand-symbol {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(245, 159, 81, 0.4);
+            border-radius: 14px;
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+
+        .brand-type {
+            color: var(--text);
+            font-size: 1.45rem;
+            font-weight: 650;
+            letter-spacing: -0.07em;
+        }
+
+        .browser-card {
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 13px;
+            background: #10131a;
+        }
+
+        .browser-bar {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .browser-bar i {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.28);
+        }
+
+        .browser-bar i:first-child { background: #f18470; }
+        .browser-bar i:nth-child(2) { background: #efbb69; }
+        .browser-bar i:nth-child(3) { background: #80ba8b; }
+
+        .web-mock {
+            min-height: 180px;
+            padding: 22px;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(245, 159, 81, 0.16), transparent 34%),
+                linear-gradient(135deg, #202733, #11151d);
+        }
+
+        .web-mock-label {
+            color: #edb779;
+            font-size: 0.55rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .web-mock h3 {
+            max-width: 12ch;
+            margin: 12px 0 18px;
+            font-size: clamp(1.3rem, 3vw, 1.9rem);
+            letter-spacing: -0.06em;
+            line-height: 0.98;
+        }
+
+        .web-mock-link {
+            display: inline-flex;
+            padding: 6px 9px;
+            border-radius: 999px;
+            background: #e9b577;
+            color: #1d1c1f;
+            font-size: 0.61rem;
+            font-weight: 650;
+        }
+
+        .campaign-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 10px;
+        }
+
+        .campaign-panel,
+        .channel-panel {
+            min-height: 188px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 13px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .campaign-panel strong,
+        .channel-panel strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.78rem;
+        }
+
+        .campaign-panel > span,
+        .channel-panel > span {
+            color: var(--text-soft);
+            font-size: 0.64rem;
+        }
+
+        .chart {
+            display: flex;
+            height: 92px;
+            align-items: end;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 10px 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .chart i {
+            flex: 1;
+            height: var(--bar-height);
+            border-radius: 5px 5px 0 0;
+            background: linear-gradient(180deg, #f5b66f, rgba(245, 159, 81, 0.16));
+        }
+
+        .channel-list {
+            display: grid;
+            gap: 11px;
+            margin-top: 18px;
+        }
+
+        .channel-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(245, 243, 238, 0.76);
+            font-size: 0.64rem;
+        }
+
+        .channel-row::before {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            content: "";
+        }
+
+        .data-layout {
+            display: grid;
+            grid-template-columns: 0.82fr 1.18fr;
+            gap: 10px;
+        }
+
+        .data-score {
+            display: grid;
+            min-height: 190px;
+            place-content: center;
+            border: 1px solid rgba(245, 159, 81, 0.2);
+            border-radius: 13px;
+            background: radial-gradient(circle, rgba(245, 159, 81, 0.13), rgba(255, 255, 255, 0.025) 70%);
+            text-align: center;
+        }
+
+        .data-score strong {
+            color: var(--accent);
+            font-size: 2.3rem;
+            letter-spacing: -0.07em;
+            line-height: 1;
+        }
+
+        .data-score span {
+            margin-top: 8px;
+            color: var(--text-soft);
+            font-size: 0.64rem;
+        }
+
+        .data-bars {
+            display: grid;
+            align-content: center;
+            gap: 14px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 13px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .data-bar-label {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 5px;
+            color: rgba(245, 243, 238, 0.7);
+            font-size: 0.62rem;
+        }
+
+        .data-bar {
+            height: 5px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .data-bar i {
+            display: block;
+            width: var(--bar-width);
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--accent-strong), #f7bc7d);
+        }
+
+        .connected {
+            position: relative;
+            width: min(calc(100% - 56px), 1144px);
+            margin: 38px auto 90px;
+            padding: clamp(34px, 6vw, 72px);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-xl);
+            background:
+                radial-gradient(circle at 88% 10%, rgba(245, 159, 81, 0.18), transparent 38%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+        }
+
+        .connected::after {
+            position: absolute;
+            right: -70px;
+            bottom: -180px;
+            width: 420px;
+            height: 420px;
+            border: 1px solid rgba(245, 159, 81, 0.18);
+            border-radius: 50%;
+            box-shadow: 0 0 0 28px rgba(245, 159, 81, 0.025), 0 0 0 58px rgba(245, 159, 81, 0.02);
+            content: "";
+            pointer-events: none;
+        }
+
+        .connected-content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+        }
+
+        .connected h2 {
+            margin: 0 0 16px;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            letter-spacing: -0.065em;
+            line-height: 0.98;
+        }
+
+        .connected p {
+            max-width: 65ch;
+            margin: 0 0 26px;
+            color: var(--text-soft);
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+
+        footer {
+            display: flex;
+            width: min(100%, 1200px);
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin: 0 auto;
+            padding: 0 28px 30px;
+            color: rgba(255, 255, 255, 0.48);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            transition: color var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                min-height: auto;
+                grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr);
+                gap: 24px;
+                padding: 138px 28px 58px;
+            }
+
+            .hero-visual {
+                min-height: 350px;
+            }
+
+            .orbit-node {
+                font-size: 0.67rem;
+            }
+
+            .service-card {
+                grid-template-columns: minmax(0, 1fr) minmax(260px, 0.78fr);
+                gap: 32px;
+            }
+
+            .service-list {
+                grid-template-columns: 1fr;
+                gap: 9px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            html {
+                scroll-padding-top: 84px;
+            }
+
+            .topbar {
+                padding: 12px 12px 0;
+            }
+
+            .topbar-inner {
+                min-height: 58px;
+                position: relative;
+                border-radius: 22px;
+                padding: 9px 12px 9px 15px;
+            }
+
+            .brand img {
+                width: 128px;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-menu {
+                display: grid;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .topbar.is-menu-open .nav-links {
+                position: absolute;
+                top: calc(100% + 8px);
+                right: 0;
+                left: 0;
+                display: grid;
+                gap: 0;
+                padding: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 16px;
+                background: rgba(12, 13, 17, 0.96);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(18px);
+            }
+
+            .topbar.is-menu-open .nav-links a {
+                padding: 12px 10px;
+            }
+
+            .topbar.is-menu-open .nav-links a::after {
+                display: none;
+            }
+
+            .topbar.is-menu-open .nav-menu-lines {
+                background: transparent;
+            }
+
+            .topbar.is-menu-open .nav-menu-lines::before {
+                transform: translateY(1px) rotate(45deg);
+            }
+
+            .topbar.is-menu-open .nav-menu-lines::after {
+                transform: translateY(0) rotate(-45deg);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 118px 20px 42px;
+            }
+
+            .hero h1 {
+                max-width: 12ch;
+                font-size: clamp(3rem, 12vw, 4.6rem);
+            }
+
+            .hero-copy {
+                font-size: 0.94rem;
+            }
+
+            .hero-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-actions .button {
+                padding-inline: 12px;
+                font-size: 0.82rem;
+            }
+
+            .hero-visual {
+                min-height: 340px;
+                margin-top: 8px;
+            }
+
+            .orbit-visual {
+                width: min(100%, 400px);
+            }
+
+            .section {
+                padding: 48px 20px;
+            }
+
+            .services-intro {
+                display: block;
+                margin-bottom: 2px;
+            }
+
+            .services-intro p {
+                margin-top: 15px;
+            }
+
+            .service-card,
+            .service-card.is-reversed {
+                grid-template-columns: 1fr;
+                gap: 27px;
+                padding: 48px 0;
+            }
+
+            .service-card.is-reversed .service-content,
+            .service-card.is-reversed .service-visual {
+                order: initial;
+            }
+
+            .service-card h2 {
+                max-width: 15ch;
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+
+            .service-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 11px 14px;
+            }
+
+            .service-visual {
+                min-height: 300px;
+                border-radius: 23px;
+            }
+
+            .connected {
+                width: calc(100% - 40px);
+                margin: 20px auto 58px;
+                padding: 34px 25px;
+                border-radius: 25px;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 20px 25px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-actions,
+            .service-list,
+            .campaign-layout,
+            .data-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions .button {
+                width: 100%;
+            }
+
+            .hero-visual {
+                min-height: 290px;
+            }
+
+            .orbit-node {
+                min-height: 34px;
+                gap: 6px;
+                padding: 6px 9px;
+                font-size: 0.58rem;
+            }
+
+            .orbit-node.intelligence {
+                left: -1%;
+            }
+
+            .service-visual {
+                min-height: 280px;
+            }
+
+            .campaign-panel,
+            .channel-panel {
+                min-height: auto;
+            }
+
+            .data-score {
+                min-height: 135px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="topbar" id="topbar">
+            <div class="topbar-inner">
+                <a class="brand" href="landing-page.html#hero" aria-label="Zentariq Solutions home">
+                    <img src="Zentariq%20_%20CRM,%20ERP,%20Marketing%20%26%20web%20Development%20Solutions_files/zentariq-logo.png" alt="Zentariq Solutions">
+                </a>
+                <nav class="nav-links" id="primaryNav" aria-label="Primary navigation">
+                    <a href="#services" aria-current="page">Services</a>
+                    <a href="#approach">Our approach</a>
+                    <a href="landing-page.html#os">About</a>
+                    <a href="landing-page.html#contact">Contact</a>
+                </nav>
+                <a class="nav-cta" href="landing-page.html#contact">Let's Talk Growth <span aria-hidden="true">↗</span></a>
+                <button class="nav-menu" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="nav-menu-lines" aria-hidden="true"></span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" id="top">
+                <div class="hero-content">
+                    <div class="eyebrow">Our Services</div>
+                    <h1>Strategy.<br>Creativity.<br>Technology.<br><span>Growth.</span></h1>
+                    <p class="hero-copy">At Zentariq, we bring business strategy, creative thinking, digital technology, and intelligent systems together to help businesses move forward. Whether you're building a brand, strengthening your digital presence, generating demand, or improving how your business operates, we connect the right ideas with the right execution.</p>
+                    <p class="hero-highlight">We turn business challenges into opportunities for growth.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#services">Explore our services <span class="button-arrow" aria-hidden="true">↓</span></a>
+                        <a class="button button-secondary" href="landing-page.html#contact">Start a conversation <span class="button-arrow" aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+                <div class="hero-visual" role="img" aria-label="Zentariq services connected around business growth">
+                    <div class="orbit-visual" aria-hidden="true">
+                        <span class="orbit-ring"></span>
+                        <span class="orbit-ring"></span>
+                        <span class="orbit-ring"></span>
+                        <div class="orbit-core"><div><strong>Business</strong><span>in motion</span></div></div>
+                        <span class="orbit-node strategy">Strategy</span>
+                        <span class="orbit-node branding">Brand &amp; creative</span>
+                        <span class="orbit-node digital">Digital presence</span>
+                        <span class="orbit-node growth">Marketing</span>
+                        <span class="orbit-node intelligence">AI &amp; data</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="services" aria-labelledby="services-heading">
+                <div class="services-intro">
+                    <div>
+                        <div class="eyebrow">What we do</div>
+                        <h2 id="services-heading">Five capabilities.<br>One connected direction.</h2>
+                    </div>
+                    <p>Bring in one focused capability or connect the right disciplines around your business goals. Each service is designed to work as part of a bigger picture.</p>
+                </div>
+
+                <article class="service-card" id="strategy">
+                    <div class="service-content">
+                        <div class="service-meta"><span class="service-number">01</span><span>Business Strategy &amp; Growth</span></div>
+                        <h2>Build with direction. Grow with purpose.</h2>
+                        <p class="service-description">We help businesses turn ideas, challenges, and ambitions into clear, actionable growth strategies. By understanding your business, market, competitors, and customers, we identify opportunities and help you make informed decisions about where to focus your efforts. From business positioning and go-to-market planning to expansion opportunities, we create practical roadmaps aligned with your goals and resources.</p>
+                        <ul class="service-list">
+                            <li>Market Research &amp; Opportunity Analysis</li>
+                            <li>Business Strategy &amp; Growth Planning</li>
+                            <li>Brand Positioning &amp; Value Proposition</li>
+                            <li>Go-to-Market &amp; Expansion Strategy</li>
+                            <li>Growth Roadmaps &amp; Performance Planning</li>
+                        </ul>
+                    </div>
+                    <div class="service-visual" role="img" aria-label="A strategy map connecting business context to a growth roadmap">
+                        <div class="visual-content">
+                            <div class="visual-caption"><strong>Strategy framework</strong><span>01 / 05</span></div>
+                            <div class="visual-card strategy-map" aria-hidden="true">
+                                <div class="map-column">
+                                    <div class="map-node"><strong>Understand</strong>Market · customer · business</div>
+                                    <div class="map-node"><strong>Identify</strong>Priorities &amp; opportunity</div>
+                                </div>
+                                <span class="map-arrow">→</span>
+                                <div class="map-column">
+                                    <div class="map-node is-highlighted"><strong>Plan</strong>Focused growth roadmap</div>
+                                    <div class="map-node"><strong>Move forward</strong>Goals · actions · measures</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="service-card is-reversed" id="branding">
+                    <div class="service-content">
+                        <div class="service-meta"><span class="service-number">02</span><span>Branding &amp; Creative</span></div>
+                        <h2>Make your brand distinctive and memorable.</h2>
+                        <p class="service-description">Your brand is more than a logo. We help businesses establish a clear identity, communicate their value, and create consistent experiences across customer touchpoints. From brand foundations to marketing creatives, we combine strategic thinking with thoughtful design to help your business stand out.</p>
+                        <ul class="service-list">
+                            <li>Brand Identity &amp; Visual Design</li>
+                            <li>Brand Strategy &amp; Positioning</li>
+                            <li>Creative Direction &amp; Campaign Concepts</li>
+                            <li>Marketing Collateral &amp; Sales Materials</li>
+                            <li>Brand Communication &amp; Design Systems</li>
+                        </ul>
+                    </div>
+                    <div class="service-visual" role="img" aria-label="A visual brand board showing identity, color, and creative direction">
+                        <div class="visual-content">
+                            <div class="visual-caption"><strong>Brand foundations</strong><span>02 / 05</span></div>
+                            <div class="brand-board" aria-hidden="true">
+                                <div class="brand-tile primary"><span class="brand-symbol">Z</span><span class="brand-type">Distinct<br>by design.</span></div>
+                                <div class="brand-tile"><span>Typography</span><strong>Clear voice</strong></div>
+                                <div class="brand-tile"><span>Visual language</span><strong>Built to belong</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="service-card" id="digital">
+                    <div class="service-content">
+                        <div class="service-meta"><span class="service-number">03</span><span>Web Development &amp; Digital Presence</span></div>
+                        <h2>Build digital experiences that move business forward.</h2>
+                        <p class="service-description">Your digital presence should do more than look good — it should communicate your value and support your business goals. We design and develop purposeful websites and digital experiences that help businesses showcase their offerings, engage visitors, and create opportunities for conversion.</p>
+                        <ul class="service-list">
+                            <li>Business Websites &amp; Website Redesigns</li>
+                            <li>Landing Pages &amp; Conversion-Focused Experiences</li>
+                            <li>eCommerce Websites &amp; Online Stores</li>
+                            <li>UI/UX Design &amp; Digital Experience Development</li>
+                            <li>Website Optimization &amp; Technical Improvements</li>
+                        </ul>
+                    </div>
+                    <div class="service-visual" role="img" aria-label="A browser preview of a carefully designed digital experience">
+                        <div class="visual-content">
+                            <div class="visual-caption"><strong>Digital experience</strong><span>03 / 05</span></div>
+                            <div class="browser-card" aria-hidden="true">
+                                <div class="browser-bar"><i></i><i></i><i></i></div>
+                                <div class="web-mock">
+                                    <span class="web-mock-label">A clearer way forward</span>
+                                    <h3>Make every interaction count.</h3>
+                                    <span class="web-mock-link">Explore what’s possible ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="service-card is-reversed" id="marketing">
+                    <div class="service-content">
+                        <div class="service-meta"><span class="service-number">04</span><span>Marketing</span></div>
+                        <h2>Reach the right audience. Create meaningful demand.</h2>
+                        <p class="service-description">We help businesses improve their visibility, attract relevant audiences, and turn attention into measurable opportunities. Through digital campaigns, search optimization, content, and performance analysis, we build marketing approaches aligned with business objectives.</p>
+                        <ul class="service-list">
+                            <li>Digital Marketing &amp; Campaign Management</li>
+                            <li>Performance Marketing &amp; Paid Advertising</li>
+                            <li>Search Engine Optimization (SEO)</li>
+                            <li>Generative Engine Optimization (GEO)</li>
+                            <li>Content Marketing &amp; Lead Generation</li>
+                        </ul>
+                        <p class="service-description"><strong>GEO (Generative Engine Optimization)</strong> improves a brand's visibility and discoverability in AI-generated answers and recommendations.</p>
+                    </div>
+                    <div class="service-visual" role="img" aria-label="A marketing performance concept with campaign and channel panels">
+                        <div class="visual-content">
+                            <div class="visual-caption"><strong>Audience &amp; visibility</strong><span>04 / 05</span></div>
+                            <div class="campaign-layout" aria-hidden="true">
+                                <div class="campaign-panel">
+                                    <strong>Campaign signals</strong><span>Learn · refine · grow</span>
+                                    <div class="chart"><i style="--bar-height: 35%"></i><i style="--bar-height: 54%"></i><i style="--bar-height: 43%"></i><i style="--bar-height: 72%"></i><i style="--bar-height: 61%"></i><i style="--bar-height: 92%"></i></div>
+                                </div>
+                                <div class="channel-panel">
+                                    <strong>Discoverability</strong><span>Be present where it matters</span>
+                                    <div class="channel-list">
+                                        <div class="channel-row">Search (SEO)</div>
+                                        <div class="channel-row">AI answers (GEO)</div>
+                                        <div class="channel-row">Content &amp; campaigns</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="service-card" id="intelligence">
+                    <div class="service-content">
+                        <div class="service-meta"><span class="service-number">05</span><span>AI &amp; Data Intelligence</span></div>
+                        <h2>Make your business smarter, more connected, and more efficient.</h2>
+                        <p class="service-description">We help businesses explore practical applications of artificial intelligence, automation, and data to simplify workflows and improve decision-making. From intelligent business systems to actionable reporting, we focus on solutions that address real operational needs and support scalable growth.</p>
+                        <ul class="service-list">
+                            <li>AI Solutions &amp; Intelligent Applications</li>
+                            <li>AI-Powered Workflows &amp; Business Automation</li>
+                            <li>CRM &amp; Business System Integration</li>
+                            <li>Data Analytics &amp; Business Intelligence</li>
+                            <li>Dashboards, Reporting &amp; Performance Insights</li>
+                        </ul>
+                    </div>
+                    <div class="service-visual" role="img" aria-label="An abstract business intelligence dashboard concept">
+                        <div class="visual-content">
+                            <div class="visual-caption"><strong>Connected intelligence</strong><span>05 / 05</span></div>
+                            <div class="data-layout" aria-hidden="true">
+                                <div class="data-score"><strong>AI</strong><span>Human-centered<br>automation</span></div>
+                                <div class="data-bars">
+                                    <div><div class="data-bar-label"><span>Connected systems</span><span>01</span></div><div class="data-bar"><i style="--bar-width: 82%"></i></div></div>
+                                    <div><div class="data-bar-label"><span>Useful insights</span><span>02</span></div><div class="data-bar"><i style="--bar-width: 68%"></i></div></div>
+                                    <div><div class="data-bar-label"><span>Smarter workflows</span><span>03</span></div><div class="data-bar"><i style="--bar-width: 91%"></i></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="connected" id="approach" aria-labelledby="approach-heading">
+                <div class="connected-content">
+                    <div class="eyebrow">A Connected Approach</div>
+                    <h2 id="approach-heading">Stronger together.</h2>
+                    <p>The strongest results happen when strategy, branding, digital experiences, marketing, and technology work together. At Zentariq, these capabilities can be combined around your business goals — whether you need one focused service or a connected approach across multiple areas.</p>
+                    <a class="button button-primary" href="landing-page.html#contact">Let's Talk Growth <span class="button-arrow" aria-hidden="true">↗</span></a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span>© Zentariq Solutions</span>
+            <a href="#top">Back to top ↑</a>
+        </footer>
+    </div>
+    <script>
+        const topbar = document.getElementById('topbar');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function updateTopbar() {
+            topbar.classList.toggle('is-scrolled', window.scrollY > 12);
+        }
+
+        window.addEventListener('scroll', updateTopbar, { passive: true });
+        updateTopbar();
+
+        function closeMenu() {
+            topbar.classList.remove('is-menu-open');
+            navMenu.setAttribute('aria-expanded', 'false');
+            navMenu.setAttribute('aria-label', 'Open navigation menu');
+        }
+
+        navMenu.addEventListener('click', () => {
+            const isOpen = topbar.classList.toggle('is-menu-open');
+            navMenu.setAttribute('aria-expanded', String(isOpen));
+            navMenu.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach((link) => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && topbar.classList.contains('is-menu-open')) {
+                closeMenu();
+                navMenu.focus();
+            }
+        });
+    </script>
+</body>
+</html>
