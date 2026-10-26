@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get to know Zentariq Solutions: a connected business solutions partner bringing strategy, technology, creativity, and growth together.">
+    <meta name="theme-color" content="#040507">
+    <title>About Us | Zentariq Solutions</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #040507;
+            --surface: rgba(255, 255, 255, 0.045);
+            --surface-raised: rgba(17, 20, 27, 0.88);
+            --border: rgba(255, 255, 255, 0.12);
+            --text: #f5f3ee;
+            --text-soft: rgba(245, 243, 238, 0.7);
+            --accent: #f5a65c;
+            --accent-strong: #ef7e34;
+            --max: 1200px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 105px;
+        }
+
+        body {
+            min-width: 320px;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        body::before,
+        body::after {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            content: "";
+        }
+
+        body::before {
+            background:
+                radial-gradient(circle at 12% 8%, rgba(245, 159, 81, 0.14), transparent 29%),
+                radial-gradient(circle at 88% 21%, rgba(173, 216, 255, 0.065), transparent 27%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.02), transparent 50%);
+        }
+
+        body::after {
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
+            background-size: 88px 88px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 78%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        .site-shell {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .topbar {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 20;
+            padding: 20px 20px 0;
+        }
+
+        .topbar-inner {
+            display: flex;
+            width: min(100%, 1440px);
+            min-height: 64px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 0 auto;
+            padding: 10px 14px 10px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            background: rgba(9, 10, 13, 0.58);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(18px);
+            transition: background var(--transition), border-color var(--transition);
+        }
+
+        .topbar.is-scrolled .topbar-inner {
+            border-color: rgba(255, 255, 255, 0.18);
+            background: rgba(5, 5, 5, 0.84);
+        }
+
+        .brand {
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+        }
+
+        .brand img {
+            display: block;
+            width: 148px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(14px, 1.8vw, 28px);
+            color: var(--text-soft);
+            font-size: 0.82rem;
+        }
+
+        .nav-links a {
+            position: relative;
+            padding: 6px 0;
+            transition: color var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a[aria-current="page"] {
+            color: var(--text);
+        }
+
+        .nav-links a::after {
+            position: absolute;
+            right: 0;
+            bottom: 1px;
+            left: 0;
+            height: 1px;
+            background: var(--accent);
+            content: "";
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a[aria-current="page"]::after {
+            transform: scaleX(1);
+        }
+
+        .nav-cta,
+        .button {
+            display: inline-flex;
+            min-height: 46px;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 11px 17px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.88rem;
+            transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+        }
+
+        .nav-cta {
+            min-height: 40px;
+            padding: 8px 14px;
+            border-color: rgba(255, 255, 255, 0.13);
+            background: rgba(255, 255, 255, 0.07);
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .button:hover,
+        .nav-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background: linear-gradient(115deg, #f7bc7d, var(--accent-strong));
+            box-shadow: 0 10px 30px rgba(245, 159, 81, 0.2);
+            color: #100c07;
+            font-weight: 700;
+        }
+
+        .button-primary:hover {
+            box-shadow: 0 14px 34px rgba(245, 159, 81, 0.29);
+        }
+
+        .button-secondary {
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .button-secondary:hover,
+        .nav-cta:hover {
+            border-color: rgba(245, 159, 81, 0.4);
+            background: rgba(245, 159, 81, 0.12);
+        }
+
+        .button-arrow {
+            display: inline-block;
+            transition: transform var(--transition);
+        }
+
+        .button:hover .button-arrow {
+            transform: translateX(4px);
+        }
+
+        .nav-menu {
+            display: none;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .nav-menu-lines,
+        .nav-menu-lines::before,
+        .nav-menu-lines::after {
+            display: block;
+            width: 14px;
+            height: 1px;
+            background: currentColor;
+            content: "";
+            transition: transform var(--transition);
+        }
+
+        .nav-menu-lines::before {
+            transform: translateY(-5px);
+        }
+
+        .nav-menu-lines::after {
+            transform: translateY(4px);
+        }
+
+        main {
+            overflow: clip;
+        }
+
+        .hero {
+            position: relative;
+            display: grid;
+            width: min(100%, 1440px);
+            min-height: min(790px, 100svh);
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+            align-items: center;
+            gap: clamp(38px, 7vw, 100px);
+            margin: 0 auto;
+            padding: 145px 34px 76px;
+        }
+
+        .hero::before {
+            position: absolute;
+            top: 8%;
+            right: 0;
+            width: min(52vw, 670px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245, 159, 81, 0.11), rgba(148, 113, 218, 0.04) 34%, transparent 68%);
+            content: "";
+            pointer-events: none;
+        }
+
+        .hero-content,
+        .hero-visual {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 23px;
+            padding: 8px 11px;
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.045);
+            color: rgba(245, 243, 238, 0.78);
+            font-size: 0.67rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px rgba(245, 159, 81, 0.6);
+            content: "";
+        }
+
+        .hero h1 {
+            max-width: 12ch;
+            margin: 0 0 22px;
+            font-size: clamp(3.2rem, 6vw, 5.8rem);
+            font-weight: 600;
+            letter-spacing: -0.065em;
+            line-height: 0.98;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-copy {
+            max-width: 61ch;
+            margin: 0 0 24px;
+            color: var(--text-soft);
+            font-size: clamp(0.98rem, 1.18vw, 1.08rem);
+            line-height: 1.75;
+        }
+
+        .hero-highlight {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 0 0 27px;
+            color: var(--text);
+            font-size: 0.98rem;
+            font-weight: 600;
+        }
+
+        .hero-highlight::before {
+            width: 2px;
+            min-height: 28px;
+            flex: 0 0 2px;
+            border-radius: 2px;
+            background: linear-gradient(var(--accent), transparent);
+            content: "";
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 11px;
+        }
+
+        .hero-visual {
+            display: grid;
+            min-height: 440px;
+            place-items: center;
+        }
+
+        .connection-visual {
+            position: relative;
+            display: grid;
+            width: min(100%, 500px);
+            aspect-ratio: 1;
+            place-items: center;
+        }
+
+        .connection-orbit {
+            position: absolute;
+            width: 87%;
+            aspect-ratio: 1;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 50%;
+            transform: rotate(-23deg) scaleY(0.57);
+        }
+
+        .connection-orbit:nth-child(2) {
+            width: 70%;
+            border-color: rgba(245, 159, 81, 0.15);
+            transform: rotate(51deg) scaleY(0.8);
+        }
+
+        .connection-orbit:nth-child(3) {
+            width: 98%;
+            transform: rotate(18deg) scaleY(0.43);
+        }
+
+        .connection-core {
+            display: grid;
+            width: 39%;
+            aspect-ratio: 1;
+            place-items: center;
+            border: 1px solid rgba(245, 159, 81, 0.32);
+            border-radius: 50%;
+            background: radial-gradient(circle at 34% 28%, rgba(245, 159, 81, 0.21), rgba(17, 20, 27, 0.94) 68%);
+            box-shadow: 0 0 70px rgba(245, 159, 81, 0.12), inset 0 0 34px rgba(255, 255, 255, 0.035);
+            text-align: center;
+        }
+
+        .connection-core strong {
+            display: block;
+            font-size: clamp(1rem, 2vw, 1.42rem);
+            letter-spacing: -0.04em;
+        }
+
+        .connection-core span {
+            display: block;
+            margin-top: 3px;
+            color: var(--text-soft);
+            font-size: 0.62rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .connection-node {
+            position: absolute;
+            display: inline-flex;
+            min-height: 40px;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            background: rgba(12, 14, 19, 0.86);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
+            color: rgba(245, 243, 238, 0.84);
+            font-size: 0.75rem;
+            backdrop-filter: blur(12px);
+        }
+
+        .connection-node::before {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            content: "";
+        }
+
+        .connection-node.strategy { top: 15%; left: 12%; }
+        .connection-node.brand { top: 22%; right: 0; }
+        .connection-node.digital { right: 2%; bottom: 19%; }
+        .connection-node.growth { bottom: 13%; left: 11%; }
+        .connection-node.intelligence { top: 48%; left: -2%; }
+
+        .section {
+            width: min(100%, var(--max));
+            margin: 0 auto;
+            padding: 68px 28px;
+        }
+
+        .section-header {
+            max-width: 720px;
+            margin-bottom: 30px;
+        }
+
+        .section-header .eyebrow,
+        .split-copy .eyebrow,
+        .principles-heading .eyebrow,
+        .capabilities-heading .eyebrow,
+        .perspective .eyebrow,
+        .final-cta .eyebrow {
+            margin-bottom: 14px;
+        }
+
+        .section-header h2,
+        .split-copy h2,
+        .principles-heading h2,
+        .capabilities-heading h2 {
+            margin: 0;
+            font-size: clamp(2.1rem, 4.1vw, 3.65rem);
+            font-weight: 550;
+            letter-spacing: -0.06em;
+            line-height: 1.02;
+        }
+
+        .section-header p,
+        .split-copy p,
+        .capabilities-heading p {
+            color: var(--text-soft);
+            font-size: 0.97rem;
+            line-height: 1.75;
+        }
+
+        .who-section {
+            padding-top: 54px;
+            padding-bottom: 88px;
+        }
+
+        .who-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+            align-items: center;
+            gap: clamp(36px, 8vw, 110px);
+        }
+
+        .who-copy .eyebrow {
+            margin-bottom: 14px;
+        }
+
+        .who-copy h2 {
+            max-width: 14ch;
+            margin: 0 0 22px;
+            font-size: clamp(2.15rem, 4vw, 3.55rem);
+            font-weight: 550;
+            letter-spacing: -0.06em;
+            line-height: 1.04;
+        }
+
+        .who-copy p {
+            margin: 0 0 16px;
+            color: var(--text-soft);
+            font-size: 0.96rem;
+            line-height: 1.78;
+        }
+
+        .who-copy p:last-child {
+            margin-bottom: 0;
+            color: rgba(245, 243, 238, 0.88);
+        }
+
+        .who-visual {
+            position: relative;
+            min-height: 430px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-xl);
+            background:
+                radial-gradient(circle at 72% 22%, rgba(245, 159, 81, 0.12), transparent 35%),
+                linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
+            box-shadow: 0 26px 70px rgba(0, 0, 0, 0.22);
+        }
+
+        .who-visual::before {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 38px 38px;
+            content: "";
+            mask-image: radial-gradient(ellipse at center, black, transparent 78%);
+            pointer-events: none;
+        }
+
+        .who-diagram {
+            position: relative;
+            width: min(100% - 44px, 450px);
+            padding: 23px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            background: rgba(9, 11, 15, 0.78);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.26);
+            backdrop-filter: blur(12px);
+        }
+
+        .diagram-caption {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 20px;
+            color: rgba(245, 243, 238, 0.58);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .diagram-caption strong {
+            color: var(--text);
+            font-size: 0.75rem;
+            letter-spacing: 0.02em;
+            text-transform: none;
+        }
+
+        .diagram-pillars {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 9px;
+        }
+
+        .diagram-pillar {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.085);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            color: rgba(245, 243, 238, 0.85);
+            font-size: 0.72rem;
+        }
+
+        .diagram-pillar::before {
+            width: 26px;
+            height: 26px;
+            flex: 0 0 26px;
+            border: 1px solid rgba(245, 159, 81, 0.32);
+            border-radius: 8px;
+            background: linear-gradient(145deg, rgba(245, 159, 81, 0.18), rgba(245, 159, 81, 0.035));
+            content: "";
+        }
+
+        .diagram-outcome {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+            padding: 13px 15px;
+            border: 1px solid rgba(245, 159, 81, 0.2);
+            border-radius: 12px;
+            background: rgba(245, 159, 81, 0.08);
+            color: var(--text);
+            font-size: 0.76rem;
+            font-weight: 600;
+        }
+
+        .diagram-outcome::before {
+            width: 7px;
+            height: 7px;
+            flex: 0 0 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px rgba(245, 159, 81, 0.5);
+            content: "";
+        }
+
+        .think-section {
+            width: min(calc(100% - 56px), 1144px);
+            margin: 0 auto 48px;
+            padding: clamp(35px, 6vw, 70px);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            border-radius: var(--radius-xl);
+            background:
+                radial-gradient(circle at 88% 12%, rgba(245, 159, 81, 0.15), transparent 34%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+        }
+
+        .think-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
+            align-items: center;
+            gap: clamp(32px, 7vw, 90px);
+        }
+
+        .think-copy h2 {
+            max-width: 10ch;
+            margin: 0;
+            font-size: clamp(2.8rem, 5vw, 4.8rem);
+            font-weight: 550;
+            letter-spacing: -0.065em;
+            line-height: 0.98;
+        }
+
+        .think-copy h2 span {
+            color: var(--accent);
+        }
+
+        .think-copy p {
+            max-width: 58ch;
+            margin: 21px 0 0;
+            color: var(--text-soft);
+            font-size: 0.97rem;
+            line-height: 1.75;
+        }
+
+        .think-map {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .think-node {
+            min-height: 94px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            background: rgba(8, 10, 14, 0.58);
+            color: rgba(245, 243, 238, 0.66);
+            font-size: 0.67rem;
+            transition: transform var(--transition), border-color var(--transition), background var(--transition);
+        }
+
+        .think-node:hover {
+            transform: translateY(-3px);
+            border-color: rgba(245, 159, 81, 0.35);
+            background: rgba(245, 159, 81, 0.07);
+        }
+
+        .think-node strong {
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 550;
+        }
+
+        .think-node:last-child {
+            grid-column: span 2;
+            min-height: 76px;
+            flex-direction: row;
+            align-items: center;
+            border-color: rgba(245, 159, 81, 0.24);
+            background: rgba(245, 159, 81, 0.075);
+        }
+
+        .think-node:last-child strong {
+            color: #ffd19e;
+        }
+
+        .principles-section {
+            padding-top: 74px;
+            padding-bottom: 92px;
+        }
+
+        .principles-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 30px;
+        }
+
+        .principles-heading h2 {
+            max-width: 14ch;
+        }
+
+        .principles-heading p {
+            max-width: 39ch;
+            margin: 0 0 3px;
+            color: var(--text-soft);
+            font-size: 0.92rem;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .principle-card {
+            grid-column: span 2;
+            min-height: 216px;
+            padding: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 19px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02));
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+            transition: transform var(--transition), border-color var(--transition), background var(--transition);
+        }
+
+        .principle-card:nth-child(4) {
+            grid-column: 2 / span 2;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(245, 159, 81, 0.32);
+            background: linear-gradient(145deg, rgba(245, 159, 81, 0.09), rgba(255, 255, 255, 0.025));
+        }
+
+        .principle-number {
+            display: block;
+            margin-bottom: 27px;
+            color: var(--accent);
+            font-size: 0.76rem;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.1em;
+        }
+
+        .principle-card h3 {
+            margin: 0 0 9px;
+            font-size: 1.06rem;
+            font-weight: 550;
+            letter-spacing: -0.025em;
+        }
+
+        .principle-card p {
+            margin: 0;
+            color: var(--text-soft);
+            font-size: 0.84rem;
+            line-height: 1.65;
+        }
+
+        .capabilities-section {
+            padding-top: 46px;
+            padding-bottom: 92px;
+        }
+
+        .capabilities-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 28px;
+        }
+
+        .capabilities-heading h2 {
+            max-width: 15ch;
+        }
+
+        .capabilities-heading p {
+            max-width: 42ch;
+            margin: 0 0 3px;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .capability-card {
+            grid-column: span 2;
+            min-height: 210px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 19px;
+            background: rgba(255, 255, 255, 0.04);
+            transition: transform var(--transition), border-color var(--transition), background var(--transition);
+        }
+
+        .capability-card:nth-child(4) {
+            grid-column: 2 / span 2;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(245, 159, 81, 0.35);
+            background: rgba(245, 159, 81, 0.075);
+        }
+
+        .capability-number {
+            margin-bottom: auto;
+            color: var(--accent);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+        }
+
+        .capability-card h3 {
+            margin: 28px 0 8px;
+            font-size: 1rem;
+            font-weight: 550;
+            letter-spacing: -0.025em;
+            line-height: 1.3;
+        }
+
+        .capability-card p {
+            margin: 0;
+            color: var(--text-soft);
+            font-size: 0.81rem;
+            line-height: 1.6;
+        }
+
+        .capability-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 17px;
+            color: #ffd19e;
+            font-size: 0.76rem;
+            font-weight: 600;
+        }
+
+        .capability-link span {
+            transition: transform var(--transition);
+        }
+
+        .capability-card:hover .capability-link span {
+            transform: translateX(4px);
+        }
+
+        .perspective {
+            position: relative;
+            width: min(100%, 1440px);
+            margin: 0 auto 76px;
+            padding: clamp(65px, 10vw, 126px) 34px;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                radial-gradient(ellipse at 50% 110%, rgba(245, 159, 81, 0.1), transparent 49%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.025));
+            text-align: center;
+        }
+
+        .perspective::before,
+        .perspective::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: min(76vw, 760px);
+            aspect-ratio: 1;
+            border: 1px solid rgba(245, 159, 81, 0.08);
+            border-radius: 50%;
+            content: "";
+            pointer-events: none;
+            transform: translate(-50%, -50%) scaleY(0.3);
+        }
+
+        .perspective::after {
+            width: min(56vw, 560px);
+            border-color: rgba(255, 255, 255, 0.06);
+            transform: translate(-50%, -50%) scaleY(0.42);
+        }
+
+        .perspective-content {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .perspective h2 {
+            margin: 0 0 22px;
+            font-size: clamp(2.6rem, 6vw, 5.5rem);
+            font-weight: 550;
+            letter-spacing: -0.065em;
+            line-height: 0.99;
+        }
+
+        .perspective p {
+            max-width: 69ch;
+            margin: 0 auto;
+            color: var(--text-soft);
+            font-size: clamp(0.96rem, 1.4vw, 1.08rem);
+            line-height: 1.8;
+        }
+
+        .perspective p + p {
+            margin-top: 14px;
+        }
+
+        .final-cta {
+            position: relative;
+            width: min(calc(100% - 56px), 1144px);
+            margin: 0 auto 82px;
+            padding: clamp(38px, 6vw, 76px);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-xl);
+            background:
+                radial-gradient(circle at 90% 8%, rgba(245, 159, 81, 0.18), transparent 38%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+        }
+
+        .final-cta::after {
+            position: absolute;
+            right: -100px;
+            bottom: -210px;
+            width: 450px;
+            height: 450px;
+            border: 1px solid rgba(245, 159, 81, 0.17);
+            border-radius: 50%;
+            box-shadow: 0 0 0 30px rgba(245, 159, 81, 0.025), 0 0 0 62px rgba(245, 159, 81, 0.018);
+            content: "";
+            pointer-events: none;
+        }
+
+        .final-cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+        }
+
+        .final-cta h2 {
+            margin: 0 0 16px;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 550;
+            letter-spacing: -0.065em;
+            line-height: 0.98;
+        }
+
+        .final-cta p {
+            max-width: 63ch;
+            margin: 0 0 26px;
+            color: var(--text-soft);
+            font-size: 0.99rem;
+            line-height: 1.75;
+        }
+
+        footer {
+            display: flex;
+            width: min(100%, 1200px);
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin: 0 auto;
+            padding: 0 28px 30px;
+            color: rgba(255, 255, 255, 0.48);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            transition: color var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        @media (max-width: 940px) {
+            .hero {
+                min-height: auto;
+                grid-template-columns: minmax(0, 1fr) minmax(270px, 0.82fr);
+                gap: 28px;
+                padding: 138px 28px 62px;
+            }
+
+            .hero-visual {
+                min-height: 370px;
+            }
+
+            .who-grid {
+                gap: 36px;
+            }
+
+            .who-visual {
+                min-height: 380px;
+            }
+
+            .principle-card,
+            .capability-card {
+                grid-column: span 3;
+            }
+
+            .principle-card:nth-child(4),
+            .capability-card:nth-child(4) {
+                grid-column: auto;
+            }
+        }
+
+        @media (max-width: 720px) {
+            html {
+                scroll-padding-top: 84px;
+            }
+
+            .topbar {
+                padding: 12px 12px 0;
+            }
+
+            .topbar-inner {
+                min-height: 58px;
+                position: relative;
+                border-radius: 22px;
+                padding: 9px 12px 9px 15px;
+            }
+
+            .brand img {
+                width: 128px;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-menu {
+                display: grid;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .topbar.is-menu-open .nav-links {
+                position: absolute;
+                top: calc(100% + 8px);
+                right: 0;
+                left: 0;
+                display: grid;
+                gap: 0;
+                padding: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 16px;
+                background: rgba(12, 13, 17, 0.96);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(18px);
+            }
+
+            .topbar.is-menu-open .nav-links a {
+                padding: 12px 10px;
+            }
+
+            .topbar.is-menu-open .nav-links a::after {
+                display: none;
+            }
+
+            .topbar.is-menu-open .nav-menu-lines {
+                background: transparent;
+            }
+
+            .topbar.is-menu-open .nav-menu-lines::before {
+                transform: translateY(1px) rotate(45deg);
+            }
+
+            .topbar.is-menu-open .nav-menu-lines::after {
+                transform: translateY(0) rotate(-45deg);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 4px;
+                padding: 118px 20px 42px;
+            }
+
+            .hero h1 {
+                max-width: 13ch;
+                font-size: clamp(3rem, 12vw, 4.6rem);
+            }
+
+            .hero-copy {
+                font-size: 0.94rem;
+            }
+
+            .hero-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-actions .button {
+                padding-inline: 12px;
+                font-size: 0.82rem;
+            }
+
+            .hero-visual {
+                min-height: 345px;
+                margin-top: 8px;
+            }
+
+            .connection-visual {
+                width: min(100%, 400px);
+            }
+
+            .connection-node {
+                min-height: 36px;
+                gap: 6px;
+                padding: 7px 10px;
+                font-size: 0.64rem;
+            }
+
+            .section {
+                padding: 52px 20px;
+            }
+
+            .who-section {
+                padding-top: 34px;
+                padding-bottom: 62px;
+            }
+
+            .who-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .who-copy h2 {
+                max-width: 15ch;
+            }
+
+            .who-visual {
+                min-height: 330px;
+                border-radius: 24px;
+            }
+
+            .think-section {
+                width: calc(100% - 40px);
+                margin-bottom: 24px;
+                padding: 34px 25px;
+                border-radius: 25px;
+            }
+
+            .think-layout {
+                grid-template-columns: 1fr;
+                gap: 27px;
+            }
+
+            .think-copy h2 {
+                max-width: 12ch;
+                font-size: clamp(2.7rem, 10vw, 4rem);
+            }
+
+            .principles-heading,
+            .capabilities-heading {
+                display: block;
+            }
+
+            .principles-heading p,
+            .capabilities-heading p {
+                margin-top: 14px;
+            }
+
+            .principles-grid,
+            .capabilities-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .principle-card,
+            .capability-card {
+                grid-column: auto;
+                min-height: 220px;
+                padding: 17px;
+            }
+
+            .principle-card:nth-child(4),
+            .capability-card:nth-child(4) {
+                grid-column: auto;
+            }
+
+            .principle-number {
+                margin-bottom: 20px;
+            }
+
+            .capability-card h3 {
+                font-size: 0.92rem;
+            }
+
+            .perspective {
+                margin-bottom: 52px;
+                padding: 70px 22px;
+            }
+
+            .perspective h2 {
+                font-size: clamp(2.55rem, 10vw, 4.3rem);
+            }
+
+            .final-cta {
+                width: calc(100% - 40px);
+                margin-bottom: 58px;
+                padding: 36px 25px;
+                border-radius: 25px;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 20px 25px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions .button {
+                width: 100%;
+            }
+
+            .hero-visual {
+                min-height: 290px;
+            }
+
+            .connection-node {
+                min-height: 33px;
+                padding: 6px 8px;
+                font-size: 0.57rem;
+            }
+
+            .connection-node.intelligence {
+                left: 0;
+            }
+
+            .who-visual {
+                min-height: 300px;
+            }
+
+            .who-diagram {
+                width: calc(100% - 28px);
+                padding: 15px;
+            }
+
+            .diagram-pillar {
+                min-height: 62px;
+                gap: 7px;
+                padding: 8px;
+                font-size: 0.64rem;
+            }
+
+            .think-node {
+                min-height: 88px;
+                padding: 12px;
+            }
+
+            .principles-grid,
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .principle-card,
+            .capability-card {
+                min-height: 0;
+                padding: 20px;
+            }
+
+            .principle-number {
+                margin-bottom: 17px;
+            }
+
+            .capability-number {
+                margin-bottom: 12px;
+            }
+
+            .capability-card h3 {
+                margin-top: 5px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="topbar" id="topbar">
+            <div class="topbar-inner">
+                <a class="brand" href="landing-page.html#hero" aria-label="Zentariq Solutions home">
+                    <img src="Zentariq%20_%20CRM,%20ERP,%20Marketing%20%26%20web%20Development%20Solutions_files/zentariq-logo.png" alt="Zentariq Solutions">
+                </a>
+                <nav class="nav-links" id="primaryNav" aria-label="Primary navigation">
+                    <a href="#who-we-are">About</a>
+                    <a href="#capabilities">Capabilities</a>
+                    <a href="our%20services.html">Services</a>
+                    <a href="landing-page.html#contact">Contact</a>
+                </nav>
+                <a class="nav-cta" href="landing-page.html#contact">Let's Talk Growth <span aria-hidden="true">↗</span></a>
+                <button class="nav-menu" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNav">
+                    <span class="nav-menu-lines" aria-hidden="true"></span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" id="top" aria-labelledby="hero-heading">
+                <div class="hero-content">
+                    <div class="eyebrow">About Zentariq</div>
+                    <h1 id="hero-heading">We connect strategy, technology, and <span>growth.</span></h1>
+                    <p class="hero-copy">Zentariq Solutions is a technology-driven business solutions partner helping businesses turn ideas into meaningful outcomes. We bring together business strategy, branding, digital experiences, marketing, and intelligent systems to solve challenges and create opportunities. Our approach goes beyond individual services — we connect the pieces that help businesses build, evolve, and grow.</p>
+                    <p class="hero-highlight">We don't just build solutions. We build connections between ideas and execution.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#who-we-are">Get to know us <span class="button-arrow" aria-hidden="true">↓</span></a>
+                        <a class="button button-secondary" href="our%20services.html">Explore our services <span class="button-arrow" aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+                <div class="hero-visual" role="img" aria-label="Zentariq connects strategy, branding, digital presence, marketing, and intelligent systems around business growth">
+                    <div class="connection-visual" aria-hidden="true">
+                        <span class="connection-orbit"></span>
+                        <span class="connection-orbit"></span>
+                        <span class="connection-orbit"></span>
+                        <div class="connection-core"><div><strong>Ideas into</strong><span>meaningful outcomes</span></div></div>
+                        <span class="connection-node strategy">Strategy</span>
+                        <span class="connection-node brand">Brand &amp; creative</span>
+                        <span class="connection-node digital">Digital experiences</span>
+                        <span class="connection-node growth">Marketing</span>
+                        <span class="connection-node intelligence">Intelligent systems</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section who-section" id="who-we-are" aria-labelledby="who-heading">
+                <div class="who-grid">
+                    <div class="who-copy">
+                        <div class="eyebrow">Who We Are</div>
+                        <h2 id="who-heading">Where business thinking meets digital execution.</h2>
+                        <p>We believe businesses grow stronger when strategy and execution work together. A great idea needs direction. A strong brand needs visibility. Technology needs purpose. And growth needs a clear plan.</p>
+                        <p>Zentariq brings these elements together through a connected approach to business transformation. We work to understand each business's goals, identify what matters most, and develop solutions that align with its needs, customers, and ambitions.</p>
+                        <p>Our focus is simple: make businesses better equipped to compete, adapt, and grow.</p>
+                    </div>
+                    <div class="who-visual" role="img" aria-label="A diagram showing connected business capabilities leading toward meaningful outcomes">
+                        <div class="who-diagram" aria-hidden="true">
+                            <div class="diagram-caption"><strong>A connected approach</strong><span>How we work</span></div>
+                            <div class="diagram-pillars">
+                                <div class="diagram-pillar">Business strategy</div>
+                                <div class="diagram-pillar">Creative thinking</div>
+                                <div class="diagram-pillar">Digital experiences</div>
+                                <div class="diagram-pillar">Intelligent systems</div>
+                            </div>
+                            <div class="diagram-outcome">Solutions aligned to your business goals</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="think-section" id="how-we-think" aria-labelledby="think-heading">
+                <div class="think-layout">
+                    <div class="think-copy">
+                        <div class="eyebrow">Our Perspective</div>
+                        <h2 id="think-heading">Growth isn't <span>one-dimensional.</span></h2>
+                        <p>Business challenges rarely exist in isolation. A website may need better positioning. A marketing campaign may need a stronger strategy. A growing business may need smarter systems and clearer data.</p>
+                        <p>That's why we look at the bigger picture.</p>
+                        <p>We connect business strategy, creative thinking, digital development, marketing, and AI-powered intelligence to help businesses move forward with greater clarity and purpose.</p>
+                    </div>
+                    <div class="think-map" aria-label="Connected capabilities">
+                        <div class="think-node"><strong>Business strategy</strong><span>Set a clear direction</span></div>
+                        <div class="think-node"><strong>Creative thinking</strong><span>Make value distinctive</span></div>
+                        <div class="think-node"><strong>Digital development</strong><span>Build with purpose</span></div>
+                        <div class="think-node"><strong>Marketing</strong><span>Reach the right people</span></div>
+                        <div class="think-node"><strong>AI-powered intelligence</strong><span>Connect systems and insight</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section principles-section" id="principles" aria-labelledby="principles-heading">
+                <div class="principles-heading">
+                    <div>
+                        <div class="eyebrow">What Guides Us</div>
+                        <h2 id="principles-heading">Principles behind every solution.</h2>
+                    </div>
+                    <p>Our principles shape how we understand a challenge, choose a direction, and bring solutions to life.</p>
+                </div>
+                <div class="principles-grid">
+                    <article class="principle-card">
+                        <span class="principle-number">01</span>
+                        <h3>Understand First</h3>
+                        <p>We begin by understanding the business, its challenges, its customers, and its goals.</p>
+                    </article>
+                    <article class="principle-card">
+                        <span class="principle-number">02</span>
+                        <h3>Strategy Before Execution</h3>
+                        <p>We establish the direction before deciding which actions, tools, or solutions make sense.</p>
+                    </article>
+                    <article class="principle-card">
+                        <span class="principle-number">03</span>
+                        <h3>Everything Connects</h3>
+                        <p>We bring business, creative, marketing, and technology capabilities together rather than treating them as disconnected activities.</p>
+                    </article>
+                    <article class="principle-card">
+                        <span class="principle-number">04</span>
+                        <h3>Built Around Outcomes</h3>
+                        <p>We focus on work that serves a purpose, addresses real challenges, and supports measurable business objectives.</p>
+                    </article>
+                    <article class="principle-card">
+                        <span class="principle-number">05</span>
+                        <h3>Evolve Continuously</h3>
+                        <p>We believe successful businesses keep learning, adapting, and improving as markets and technologies change.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section capabilities-section" id="capabilities" aria-labelledby="capabilities-heading">
+                <div class="capabilities-heading">
+                    <div>
+                        <div class="eyebrow">Our Capabilities</div>
+                        <h2 id="capabilities-heading">Five capabilities. One connected approach.</h2>
+                    </div>
+                    <p>Our capabilities span five connected areas. Each has its own role. Together, they create a more connected approach to solving business challenges.</p>
+                </div>
+                <div class="capabilities-grid">
+                    <article class="capability-card">
+                        <span class="capability-number">01 / DIRECTION</span>
+                        <h3>Business Strategy &amp; Growth</h3>
+                        <p>Finding direction, evaluating opportunities, and planning the next stage of growth.</p>
+                        <a class="capability-link" href="our%20services.html#strategy">Explore this capability <span aria-hidden="true">→</span></a>
+                    </article>
+                    <article class="capability-card">
+                        <span class="capability-number">02 / IDENTITY</span>
+                        <h3>Branding &amp; Creative</h3>
+                        <p>Building distinctive identities and meaningful brand experiences.</p>
+                        <a class="capability-link" href="our%20services.html#branding">Explore this capability <span aria-hidden="true">→</span></a>
+                    </article>
+                    <article class="capability-card">
+                        <span class="capability-number">03 / EXPERIENCE</span>
+                        <h3>Web Development &amp; Digital Presence</h3>
+                        <p>Creating digital platforms and experiences that support business goals.</p>
+                        <a class="capability-link" href="our%20services.html#digital">Explore this capability <span aria-hidden="true">→</span></a>
+                    </article>
+                    <article class="capability-card">
+                        <span class="capability-number">04 / VISIBILITY</span>
+                        <h3>Marketing</h3>
+                        <p>Improving visibility, generating demand, and helping businesses reach the right audiences through digital marketing, performance marketing, SEO, and GEO.</p>
+                        <a class="capability-link" href="our%20services.html#marketing">Explore this capability <span aria-hidden="true">→</span></a>
+                    </article>
+                    <article class="capability-card">
+                        <span class="capability-number">05 / INTELLIGENCE</span>
+                        <h3>AI &amp; Data Intelligence</h3>
+                        <p>Applying intelligent technology, automation, and data to improve business processes and decision-making.</p>
+                        <a class="capability-link" href="our%20services.html#intelligence">Explore this capability <span aria-hidden="true">→</span></a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="perspective" id="our-perspective" aria-labelledby="perspective-heading">
+                <div class="perspective-content">
+                    <div class="eyebrow">Our Perspective</div>
+                    <h2 id="perspective-heading">Think clearly. Build intentionally. Grow continuously.</h2>
+                    <p>We see technology as an enabler, creativity as a differentiator, strategy as a foundation, and growth as an ongoing process.</p>
+                    <p>As businesses evolve, their needs change. Our aim is to help them navigate those changes with a clearer direction, purposeful execution, and solutions built around where they want to go next.</p>
+                </div>
+            </section>
+
+            <section class="final-cta" id="contact" aria-labelledby="cta-heading">
+                <div class="final-cta-content">
+                    <div class="eyebrow">Start a conversation</div>
+                    <h2 id="cta-heading">Let's Build What's Next.</h2>
+                    <p>Every business has a different starting point and a different ambition. The right next step begins with understanding both.<br><br>Let's explore your challenges, uncover opportunities, and create a path forward.</p>
+                    <a class="button button-primary" href="landing-page.html#contact">Let's Talk Growth <span class="button-arrow" aria-hidden="true">↗</span></a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span>© Zentariq Solutions</span>
+            <a href="#top">Back to top ↑</a>
+        </footer>
+    </div>
+    <script>
+        const topbar = document.getElementById('topbar');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function updateTopbar() {
+            topbar.classList.toggle('is-scrolled', window.scrollY > 12);
+        }
+
+        window.addEventListener('scroll', updateTopbar, { passive: true });
+        updateTopbar();
+
+        function closeMenu() {
+            topbar.classList.remove('is-menu-open');
+            navMenu.setAttribute('aria-expanded', 'false');
+            navMenu.setAttribute('aria-label', 'Open navigation menu');
+        }
+
+        navMenu.addEventListener('click', () => {
+            const isOpen = topbar.classList.toggle('is-menu-open');
+            navMenu.setAttribute('aria-expanded', String(isOpen));
+            navMenu.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach((link) => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && topbar.classList.contains('is-menu-open')) {
+                closeMenu();
+                navMenu.focus();
+            }
+        });
+    </script>
+</body>
+</html>
